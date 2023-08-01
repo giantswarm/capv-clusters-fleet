@@ -1,0 +1,26 @@
+apiVersion: application.giantswarm.io/v1alpha1
+kind: App
+metadata:
+  generation: 1
+  labels:
+    app-operator.giantswarm.io/version: 0.0.0
+    app.kubernetes.io/name: default-apps-vsphere
+    giantswarm.io/cluster: ${cluster_name}
+    giantswarm.io/managed-by: cluster
+  name: ${cluster_name}-default-apps
+  namespace: org-${organization}
+spec:
+  catalog: cluster
+  config:
+    configMap:
+      name: ${cluster_name}-cluster-values
+      namespace: org-${organization}
+  kubeConfig:
+    inCluster: true
+  name: default-apps-vsphere
+  namespace: org-${organization}
+  userConfig:
+    configMap:
+      name: ${cluster_name}-default-apps-user-values
+      namespace: org-${organization}
+  version: "${default_apps_release}"

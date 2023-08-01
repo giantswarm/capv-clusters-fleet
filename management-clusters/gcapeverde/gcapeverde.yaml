@@ -10,5 +10,5 @@ spec:
   path: "./management-clusters/gcapeverde"
   sourceRef:
     kind: GitRepository
-    name: YOUR_REPO
+    name: gcapeverde-git-repo
   timeout: 2m

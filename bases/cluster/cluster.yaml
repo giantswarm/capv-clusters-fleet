@@ -1,0 +1,27 @@
+apiVersion: application.giantswarm.io/v1alpha1
+kind: App
+metadata:
+  labels:
+    app-operator.giantswarm.io/version: 0.0.0
+    app.kubernetes.io/name: cluster-vsphere
+  name: ${cluster_name}
+  namespace: org-${organization}
+spec:
+  catalog: cluster-test
+  extraConfigs:
+  - kind: secret
+    name: container-registries-configuration
+    namespace: default
+    priority: 25
+  kubeConfig:
+    inCluster: true
+  name: cluster-vsphere
+  namespace: org-${organization}
+  userConfig:
+    configMap:
+      name: ${cluster_name}-user-values
+      namespace: org-${organization}
+    secret:
+      name: vsphere-credentials
+      namespace: org-${organization}
+  version: "${cluster_release}"

@@ -1,0 +1,55 @@
+helmReleases:
+  cpi:
+    interval: 20s
+  cilium:
+    interval: 30s
+  coredns:
+    interval: 30s
+baseDomain: test.gigantic.io
+clusterDescription: "${cluster_description}"
+organization: ${organization}
+cluster:
+  kubernetesVersion: v1.24.11
+  enableEncryptionProvider: false
+connectivity:
+  network:
+    controlPlaneEndpoint:
+      host: ""
+      ipPoolName: wc-cp-ips
+      port: 6443
+    loadBalancers:
+      cidrBlocks: []
+      # - "10.10.222.132/32"
+controlPlane:
+  image:
+    repository: registry.k8s.io
+  replicas: 1
+  catalog: "giantswarm"
+  machineTemplate:
+    network:
+      devices:
+      - networkName: 'grasshopper-capv'
+        dhcp4: true
+    cloneMode: "linkedClone"
+    diskGiB: 50
+    numCPUs: 4
+    memoryMiB: 8096
+    resourcePool: "grasshopper"
+    template: ubuntu-2004-kube-v1.24.11
+
+nodeClasses:
+  default:
+    template: ubuntu-2004-kube-v1.24.11
+    cloneMode: "linkedClone"
+    diskGiB: 50
+    numCPUs: 6
+    memoryMiB: 14000
+    resourcePool: "grasshopper"
+    network:
+      devices:
+      - networkName: 'grasshopper-capv'
+        dhcp4: true
+nodePools:
+  worker:
+    class: "default"
+    replicas: 2
