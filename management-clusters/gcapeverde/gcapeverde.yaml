@@ -12,3 +12,7 @@ spec:
     kind: GitRepository
     name: gcapeverde-git-repo
   timeout: 2m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg-master
