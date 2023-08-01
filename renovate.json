@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "labels": ["dependencies", "renovate"],
+  "dependencyDashboard": false,
+  "ignorePaths": [
+    ".github/"
+  ],
+  "ignoreDeps": [
+    "architect",
+    "zricethezav/gitleaks-action",
+    "actions/setup-go"
+  ],
+  "kustomize": {
+    "enabled": false
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["apps/.+/.+\\.yaml$"],
+      "matchStrings": ["repo: (?<depName>.*)\n(\\s)*version: (?<currentValue>.*?)\n"],
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    }
+  ],
+  "schedule": [ "after 6am every weekday" ]
+}

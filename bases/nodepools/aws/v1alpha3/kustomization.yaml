@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+patches:
+- patch: |-
+    - op: replace
+      path: "/apiVersion"
+      value: cluster.x-k8s.io/v1beta1
+    - op: replace
+      path: "/spec/template/spec/infrastructureRef/apiVersion"
+      value: infrastructure.giantswarm.io/v1alpha3
+  target:
+    group: cluster.x-k8s.io
+    kind: MachineDeployment
+    version: replaceme
+- patch: |-
+    - op: replace
+      path: "/apiVersion"
+      value: infrastructure.giantswarm.io/v1alpha3
+  target:
+    group: infrastructure.giantswarm.io
+    kind: AWSMachineDeployment
+    version: replaceme
+resources:
+- ../template

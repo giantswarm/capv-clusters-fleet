@@ -1,0 +1,9 @@
+---
+rules:
+  key-ordering: {}
+yaml-files:
+  - "*.yaml"
+ignore: |
+  .pre-commit-config.yaml
+  *.enc.yaml
+  .github/**

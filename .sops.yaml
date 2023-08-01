@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: management-clusters/gcapeverde/secrets/.*\.enc\.yaml
+    encrypted_regex: ^(data|stringData)$
+    pgp: 33F6B8345F76AE375342938CF8BEC7C06BF9EA8D
