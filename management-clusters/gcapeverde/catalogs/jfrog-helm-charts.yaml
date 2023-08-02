@@ -1,0 +1,17 @@
+apiVersion: application.giantswarm.io/v1alpha1
+kind: Catalog
+metadata:
+  labels:
+    application.giantswarm.io/catalog-visibility: public
+  name: jfrog-helm-charts
+  namespace: default
+spec:
+  description: JFrog Helm Charts
+  logoURL: https://speedmedia.jfrog.com/08612fe1-9391-4cf3-ac1a-6dd49c36b276/https://media.jfrog.com/wp-content/uploads/2021/12/29113553/jfrog-logo-2022.svg/w_1024
+  repositories:
+  - URL: https://charts.jfrog.io
+    type: helm
+  storage:
+    URL: https://charts.jfrog.io
+    type: helm
+  title: jfrog-helm-charts
