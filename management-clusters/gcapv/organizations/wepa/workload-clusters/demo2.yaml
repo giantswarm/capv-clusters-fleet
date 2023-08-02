@@ -5,10 +5,10 @@ metadata:
   namespace: org-wepa
 spec:
   interval: 1m
-  path: ./management-clusters/gcapeverde/organizations/wepa/workload-clusters/demo2/mapi
+  path: ./management-clusters/gcapv/organizations/wepa/workload-clusters/demo2/mapi
   postBuild:
     substitute:
-     management_cluster_name: gcapeverde
+     management_cluster_name: gcapv
      cluster_name: demo2
      cluster_description: "Demo Cluster number 2"
      organization: wepa
@@ -18,5 +18,5 @@ spec:
   serviceAccountName: automation
   sourceRef:
     kind: GitRepository
-    name: gcapeverde-git-repo
+    name: gcapv-git-repo
     namespace: default

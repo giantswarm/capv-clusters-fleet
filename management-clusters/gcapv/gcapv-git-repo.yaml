@@ -1,12 +1,12 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: gcapeverde-git-repo
+  name: gcapv-git-repo
   namespace: default
 spec:
   ignore: |-
     **
-    !management-clusters/gcapeverde/**
+    !management-clusters/gcapv/**
     !bases/**
     **.md
   interval: 30s
