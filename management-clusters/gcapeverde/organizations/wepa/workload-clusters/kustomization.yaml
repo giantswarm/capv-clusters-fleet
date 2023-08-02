@@ -3,4 +3,3 @@ buildMetadata: [originAnnotations]
 kind: Kustomization
 resources:
   - demo2.yaml
-  #- demo.yaml
