@@ -1,0 +1,14 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: gcapv-gitops
+  namespace: default
+spec:
+  serviceAccountName: automation
+  prune: false
+  interval: 1m
+  path: "./management-clusters/gcapv"
+  sourceRef:
+    kind: GitRepository
+    name: YOUR_REPO
+  timeout: 2m
