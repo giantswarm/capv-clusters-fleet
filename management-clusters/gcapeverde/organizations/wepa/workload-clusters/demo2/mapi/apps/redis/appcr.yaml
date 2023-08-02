@@ -15,3 +15,6 @@ spec:
     context:
       name: ${cluster_name}-kubeconfig
     inCluster: false
+    secret:
+      name: ${cluster_name}-kubeconfig
+      namespace: org-${organization}
