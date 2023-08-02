@@ -1,14 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 buildMetadata: [originAnnotations]
-kind: Kustomization
-resources:
-  - appcr.yaml
 configMapGenerator:
-  - name: ${cluster_name}-nginx-ingress-controller-app-userconfig
-    namespace: org-${organization}
-    files:
+  - files:
       - values=values.yaml
+    name: ${cluster_name}-nginx-ingress-controller-app-userconfig
+    namespace: org-${organization}
 generatorOptions:
   disableNameSuffixHash: true
   labels:
-    app-operator.giantswarm.io/watching: "true"
+    app-operator.giantswarm.io/watching: 'true'
+kind: Kustomization
+resources:
+  - appcr.yaml

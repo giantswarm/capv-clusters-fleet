@@ -1,16 +1,13 @@
 apiVersion: application.giantswarm.io/v1alpha1
 kind: App
 metadata:
-  name: ${cluster_name}-nginx-ingress
-  namespace: org-${organization}
-  labels: 
+  labels:
     giantswarm.io/cluster: ${cluster_name}
     giantswarm.io/managed-by: flux
+  name: ${cluster_name}-nginx-ingress
+  namespace: org-${organization}
 spec:
   catalog: giantswarm
-  name: nginx-ingress-controller-app
-  namespace: kube-system
-  version: 2.30.1
   kubeConfig:
     context:
       name: ${cluster_name}-kubeconfig
@@ -18,7 +15,10 @@ spec:
     secret:
       name: ${cluster_name}-kubeconfig
       namespace: org-${organization}
+  name: nginx-ingress-controller-app
+  namespace: kube-system
   userConfig:
     configMap:
       name: ${cluster_name}-nginx-ingress-controller-app-userconfig
       namespace: org-${organization}
+  version: 2.30.1

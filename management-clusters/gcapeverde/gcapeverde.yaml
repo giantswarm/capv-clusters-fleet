@@ -4,15 +4,15 @@ metadata:
   name: gcapeverde-gitops
   namespace: default
 spec:
-  serviceAccountName: automation
-  prune: false
-  interval: 1m
-  path: "./management-clusters/gcapeverde"
-  sourceRef:
-    kind: GitRepository
-    name: gcapeverde-git-repo
-  timeout: 2m
   decryption:
     provider: sops
     secretRef:
       name: sops-gpg-master
+  interval: 1m
+  path: "./management-clusters/gcapeverde"
+  prune: false
+  serviceAccountName: automation
+  sourceRef:
+    kind: GitRepository
+    name: gcapeverde-git-repo
+  timeout: 2m
