@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+buildMetadata: [originAnnotations]
+kind: Kustomization
+resources:
+  - ../../../../../../../../bases/cluster
+  - ../../../../../../../../bases/apps/default
+commonLabels:
+  cluster.x-k8s.io/cluster-name: ${cluster_name}
+  giantswarm.io/cluster: ${cluster_name}
+  giantswarm.io/organizatioon: ${organization}
+  giantswarm.io/managed-by: flux
+configMapGenerator:
+  - name: ${cluster_name}-extraconfigs
+    namespace: org-${organization}
+    files:
+      - values=cluster-extraconfigs.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    app-operator.giantswarm.io/watching: "true"
+patches:
+  - patch: |
+      - op: add
+        path: /spec/extraConfigs/-
+        value:
+          # See: https://docs.giantswarm.io/app-platform/app-configuration/#extra-configs
+            name: "${cluster_name}-extraconfigs"
+            namespace: org-${organization}
+            priority: 125
+    target:
+      group: application.giantswarm.io
+      kind: App
+      name: \${cluster_name}
+      namespace: org-\${organization}
+      version: v1alpha1
