@@ -1,0 +1,32 @@
+connectivity:
+  network:
+    loadBalancers:
+      cidrBlocks:
+      - "10.10.222.200/32"
+
+controlPlane:
+  machineTemplate:
+    network:
+      devices:
+      - networkName: 'grasshopper-capv'
+        dhcp4: true
+    diskGiB: 50
+    numCPUs: 4
+    memoryMiB: 8096
+    template: ubuntu-2004-kube-v1.24.11
+
+nodeClasses:
+  default:
+    template: ubuntu-2004-kube-v1.24.11
+    diskGiB: 50
+    numCPUs: 6
+    memoryMiB: 14000
+    network:
+      devices:
+      - networkName: 'grasshopper-capv'
+        dhcp4: true
+
+nodePools:
+  worker:
+    class: "default"
+    replicas: 2
