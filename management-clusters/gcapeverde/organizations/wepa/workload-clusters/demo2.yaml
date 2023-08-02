@@ -8,9 +8,9 @@ spec:
   path: ./management-clusters/gcapeverde/organizations/wepa/workload-clusters/demo2/mapi
   postBuild:
     substitute:
-      cluster_description: Demo Cluster number 2
+      cluster_description: "Demo Cluster number 2"
       cluster_name: demo2
-      cluster_release: 0.6.1-75504f14917c31b7bcab23fe198737cfd5b79eb0
+      cluster_release: 0.6.1-50dfecce0659b3b403d325fe71a0c61e7aa6fbc5
       default_apps_release: 0.9.2
       management_cluster_name: gcapeverde
       organization: wepa
